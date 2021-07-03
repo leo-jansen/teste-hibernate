@@ -7,7 +7,7 @@
     <properties>
       <property name="javax.persistence.jdcb.driver" value="org.postgresql.Driver"/>
       <property name="javax.persistence.jdcb.url" value="jdbc:postgresql://localhost:5432/loja"/>
-      <property name="javax.persistence.jdcb.username" value="postgres"/>
+      <property name="javax.persistence.jdcb.user" value="postgres"/>
       <property name="javax.persistence.jdcb.password" value="postgres"/>
 
       <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
