@@ -22,9 +22,13 @@ public class App {
 
     // teste para persistir um produto
     entityManager.getTransaction().begin();
-    entityManager.persist(categoria);     // abrindo conexao
+    entityManager.persist(categoria);           // abrindo conexao
     entityManager.persist(celular);             // persistindo o objeto
-    entityManager.getTransaction().commit();    // comitando a persistencia 
+    entityManager.flush();                      // atualiza no banco de dados todos os objetos MANAGED
+    entityManager.clear();                      // coloca todos os objetos em DEPASHED
+    celular = entityManager.merge(celular);     // Devolve um novo objeto MANAGED (necessica ter o construtor padrão) 
+    celular.setNome("Poco");                    
+    entityManager.getTransaction().commit();    // comita a atualização no BD 
     entityManager.close();                      // fechando a conexao
   }
 }
