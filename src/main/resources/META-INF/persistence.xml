@@ -13,6 +13,7 @@
       <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
       <property name="hibernate.hbm2ddl.auto" value="update"/> <!-- atualiza as tabelas no BD auto -->
       <property name="hibernate.show_sql" value="true"/> <!-- mostrar SQL no console -->
+      <property name="hibernate.format_sql" value="true"/> <!-- formata o sql no console-->
     </properties>
   </persistence-unit>
 </persistence>
