@@ -35,4 +35,9 @@ public class Produto {
   public void setNome(String nome) {
     this.nome = nome;
   }
+
+  @Override
+  public String toString() {
+    return String.format("Nome: %s | Preço: %.2f | Categoria: %s | Descrição: %s", this.nome, this.preco, this.categoria.toString(), this.descricao);
+  }
 }
