@@ -11,10 +11,6 @@ import br.com.alura.entities.Categoria;
 import br.com.alura.entities.Produto;
 import br.com.alura.util.JPAUtil;
 
-/**
- * Hello world!
- *
- */
 public class App {
   public static void main(String[] args) {
     Categoria eletronico = new Categoria("ELETRONICO");
