@@ -32,6 +32,10 @@ public class Produto {
     this.categoria = categoria;
   }
 
+  public BigDecimal getPreco() {
+    return preco;
+  }
+
   public void setNome(String nome) {
     this.nome = nome;
   }
