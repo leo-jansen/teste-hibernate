@@ -44,7 +44,8 @@ public class App {
     System.out.println(novoProduto);
     System.out.println("======================");
     todosProdutos.forEach(p -> System.out.println(p.toString()));
-    
+    BigDecimal valorTotalVendido = pedidoDao.valorTotalVendido();
+    System.out.println(String.format("Valor total pedido foi: %.2f", valorTotalVendido));
     
     entityManager.close();
   }
