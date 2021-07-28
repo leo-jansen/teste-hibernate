@@ -3,6 +3,7 @@ package br.com.alura.entities;
 import java.math.BigDecimal;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,7 +19,7 @@ public class Produto {
   private String nome;
   private String descricao;
   private BigDecimal preco;
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY) //lazy - carregamento só quando acessado (boa pratica), evita efeito cascata
   private Categoria categoria;
 
   public Produto() {

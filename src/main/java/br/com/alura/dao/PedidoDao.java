@@ -21,4 +21,9 @@ public class PedidoDao {
     String jpql = "SELECT SUM(p.valorTotal) FROM Pedido p";
     return eManager.createQuery(jpql, BigDecimal.class).getSingleResult();
   }
+
+  public Pedido buscarPedidoComCliente(long id) {
+    // JOIN FETCH p.cliente carrega o relacionamento lazzy 
+    return eManager.createQuery("SELECT p FROM Pedido p JOIN FETCH p.cliente WHERE p.id = :id", Pedido.class).setParameter("id", id).getSingleResult();
+  }
 }

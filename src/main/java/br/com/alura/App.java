@@ -36,7 +36,7 @@ public class App {
     produtoDao.cadastrar(celular);
     clienteDao.cadastrar(cliente);
     pedidoDao.cadastrar(pedido);
-
+    
     entityManager.getTransaction().commit();
     
     Produto novoProduto = produtoDao.buscarProdutoPorId(1l);
@@ -47,7 +47,9 @@ public class App {
     BigDecimal valorTotalVendido = pedidoDao.valorTotalVendido();
     System.out.println(String.format("Valor total pedido foi: %.2f", valorTotalVendido));
     
+    Pedido pedidoComCliente = pedidoDao.buscarPedidoComCliente(4l);
     entityManager.close();
+    System.out.println(pedidoComCliente.toString());
   }
 }
 

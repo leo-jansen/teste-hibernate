@@ -8,6 +8,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,7 +25,7 @@ public class Pedido {
   @Column(name = "valor_total")
   private BigDecimal valorTotal = BigDecimal.ZERO;
   private LocalDate data = LocalDate.now();
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY) //lazy - carregamento só quando acessado (boa pratica), evita efeito cascata
   private Cliente cliente;
   @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
   private List<ItemPedido> itens = new ArrayList<>();
@@ -45,6 +46,6 @@ public class Pedido {
 
   @Override
   public String toString() {
-    return String.format("Cliente: %s | Valor Total: %.2f | Data: %t", this.cliente.toString(), this.valorTotal, this.data);
+    return String.format("Cliente: %s | Valor Total: %.2f | Data: %s", this.cliente.toString(), this.valorTotal, this.data.toString());
   }
 }

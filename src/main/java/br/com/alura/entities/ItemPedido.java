@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,9 +20,9 @@ public class ItemPedido {
   @Column(name = "preco_unitario")
   private BigDecimal precoUnitario;
   private int quantidade;
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY) //lazy - carregamento só quando acessado (boa pratica), evita efeito cascata
   private Pedido pedido;
-  @ManyToOne
+  @ManyToOne // por padrão já é lazy
   private Produto produto;
 
   public ItemPedido() {
