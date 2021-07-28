@@ -1,6 +1,7 @@
 package br.com.alura;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -47,7 +48,8 @@ public class App {
     BigDecimal valorTotalVendido = pedidoDao.valorTotalVendido();
     System.out.println(String.format("Valor total pedido foi: %.2f", valorTotalVendido));
     
-    Pedido pedidoComCliente = pedidoDao.buscarPedidoComCliente(4l);
+    Pedido pedidoComCliente = pedidoDao.buscarPedidoComCliente(59l);
+    List<Produto> tProdutos = produtoDao.buscarPorParametrosComCriteria(null, null, LocalDate.now());
     entityManager.close();
     System.out.println(pedidoComCliente.toString());
   }

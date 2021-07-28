@@ -1,6 +1,7 @@
 package br.com.alura.entities;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,6 +20,7 @@ public class Produto {
   private String nome;
   private String descricao;
   private BigDecimal preco;
+  private LocalDate dataCadastro = LocalDate.now();
   @ManyToOne(fetch = FetchType.LAZY) //lazy - carregamento só quando acessado (boa pratica), evita efeito cascata
   private Categoria categoria;
 
@@ -43,6 +45,6 @@ public class Produto {
 
   @Override
   public String toString() {
-    return String.format("Nome: %s | Preço: %.2f | Categoria: %s | Descrição: %s", this.nome, this.preco, this.categoria.toString(), this.descricao);
+    return String.format("Nome: %s | Preço: %.2f | Categoria: %s | Descrição: %s | Data Cadastro: %s", this.nome, this.preco, this.categoria.toString(), this.descricao, this.dataCadastro.toString());
   }
 }
