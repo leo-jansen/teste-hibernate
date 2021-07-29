@@ -8,11 +8,14 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "produtos")
+@Inheritance(strategy = InheritanceType.JOINED) //single_table = tabela unica | joined = tabela separada com join | table_per_class = tabela somente para os filhos
 public class Produto {
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -35,8 +38,24 @@ public class Produto {
     this.categoria = categoria;
   }
 
+  public String getNome() {
+    return nome;
+  }
+
+  public String getDescricao() {
+    return descricao;
+  }
+
   public BigDecimal getPreco() {
     return preco;
+  }
+
+  public LocalDate getDataCadastro() {
+    return dataCadastro;
+  }
+
+  public Categoria getCategoria() {
+    return categoria;
   }
 
   public void setNome(String nome) {

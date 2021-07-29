@@ -12,7 +12,9 @@ import br.com.alura.dao.PedidoDao;
 import br.com.alura.dao.ProdutoDao;
 import br.com.alura.entities.Categoria;
 import br.com.alura.entities.Cliente;
+import br.com.alura.entities.Informatica;
 import br.com.alura.entities.ItemPedido;
+import br.com.alura.entities.Livro;
 import br.com.alura.entities.Pedido;
 import br.com.alura.entities.Produto;
 import br.com.alura.util.JPAUtil;
@@ -20,10 +22,14 @@ import br.com.alura.util.JPAUtil;
 public class App {
   public static void main(String[] args) {
     Categoria eletronico = new Categoria("ELETRONICO");
-    Produto celular = new Produto("Galaxy S20 FE", "celular feito para você", new BigDecimal("2400"), eletronico);
+    Categoria fantasia = new Categoria("FANTASIA");
+    Informatica celular = new Informatica("Galaxy S20 FE", "celular feito para você", new BigDecimal("2400"), eletronico, "SAMSUNG", "SM-G780G");
+    Livro livro = new Livro("Dragões de Éter", "Livro de fantasia", new BigDecimal("24.90"), fantasia, "Raphael Draccon", 700);
     Cliente cliente = new Cliente("Alura", "123456789", "R. do Ouvidor", "Centro", "Rio de Janeiro", "RJ", "20040-030");
+    
     Pedido pedido = new Pedido(cliente);
     pedido.adicionarItem(new ItemPedido(10, pedido, celular));
+    pedido.adicionarItem(new ItemPedido(10, pedido, livro));
 
     EntityManager entityManager = JPAUtil.gEntityManager();
     ProdutoDao produtoDao = new ProdutoDao(entityManager);
@@ -34,7 +40,9 @@ public class App {
     entityManager.getTransaction().begin();
 
     categoriaDao.cadastrar(eletronico);
-    produtoDao.cadastrar(celular);
+    categoriaDao.cadastrar(fantasia);
+    produtoDao.cadastrarInformatica(celular);
+    produtoDao.cadastrarLivro(livro);
     clienteDao.cadastrar(cliente);
     pedidoDao.cadastrar(pedido);
     

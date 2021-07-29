@@ -10,6 +10,8 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import br.com.alura.entities.Informatica;
+import br.com.alura.entities.Livro;
 import br.com.alura.entities.Produto;
 
 public class ProdutoDao {
@@ -19,8 +21,12 @@ public class ProdutoDao {
     this.eManager = eManager;
   }
 
-  public void cadastrar(Produto produto) {
-    this.eManager.persist(produto);
+  public void cadastrarInformatica(Informatica informatica) {
+    this.eManager.persist(informatica);
+  }
+
+  public void cadastrarLivro(Livro livro) {
+    this.eManager.persist(livro);
   }
 
   public void atualizar(Produto produto) {
