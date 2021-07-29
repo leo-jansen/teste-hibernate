@@ -21,7 +21,7 @@ public class App {
   public static void main(String[] args) {
     Categoria eletronico = new Categoria("ELETRONICO");
     Produto celular = new Produto("Galaxy S20 FE", "celular feito para você", new BigDecimal("2400"), eletronico);
-    Cliente cliente = new Cliente("Alura", "123456789");
+    Cliente cliente = new Cliente("Alura", "123456789", "R. do Ouvidor", "Centro", "Rio de Janeiro", "RJ", "20040-030");
     Pedido pedido = new Pedido(cliente);
     pedido.adicionarItem(new ItemPedido(10, pedido, celular));
 
@@ -48,7 +48,7 @@ public class App {
     BigDecimal valorTotalVendido = pedidoDao.valorTotalVendido();
     System.out.println(String.format("Valor total pedido foi: %.2f", valorTotalVendido));
     
-    Pedido pedidoComCliente = pedidoDao.buscarPedidoComCliente(59l);
+    Pedido pedidoComCliente = pedidoDao.buscarPedidoComCliente(1l);
     List<Produto> tProdutos = produtoDao.buscarPorParametrosComCriteria(null, null, LocalDate.now());
     entityManager.close();
     System.out.println(pedidoComCliente.toString());
